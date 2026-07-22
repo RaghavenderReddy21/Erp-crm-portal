@@ -1,0 +1,11 @@
+# PostgreSQL connection string
+# Local example:      postgresql://postgres:postgres@localhost:5432/erp_crm
+# Neon/Supabase/Render will give you a connection string to paste here.
+DATABASE_URL="postgresql://neondb_owner:npg_fbPEwMs2gU0T@ep-fancy-lab-aw8elsid-pooler.c-12.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+
+JWT_SECRET="myLocalDevSecret9283hslkdj28!"
+JWT_EXPIRES_IN="8h"
+
+PORT=4000
+
+CORS_ORIGIN="http://localhost:5173"
