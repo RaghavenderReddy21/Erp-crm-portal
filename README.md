@@ -4,6 +4,15 @@ A small internal ERP/CRM system for a wholesale/distribution company: customer C
 product & inventory management, and a sales challan workflow with real stock-control
 business logic.
 
+## Live Deployment
+
+- **Frontend**: https://erp-crm-portal-theta.vercel.app
+- **Backend API**: https://erp-crm-portal-5maj.onrender.com
+- **GitHub repository**: https://github.com/RaghavenderReddy21/Erp-crm-portal
+
+> Note: the backend runs on Render's free tier, which spins down after 15 minutes
+> of inactivity. The first request after idle time may take 30-50 seconds to
+> respond while it wakes up — this is expected behavior, not a bug.
 ## Tech Stack
 
 - **Backend**: Node.js, TypeScript, Express.js, PostgreSQL (via Prisma ORM), JWT auth, Zod validation
