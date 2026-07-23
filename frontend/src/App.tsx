@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
 import CustomersListPage from "./pages/CustomersListPage";
 import CustomerFormPage from "./pages/CustomerFormPage";
 import CustomerDetailPage from "./pages/CustomerDetailPage";
@@ -16,7 +17,8 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<LoginPage />} />
 
-      <Route path="/" element={<Navigate to="/customers" replace />} />
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
 
       <Route path="/customers" element={<ProtectedRoute><CustomersListPage /></ProtectedRoute>} />
       <Route path="/customers/new" element={<ProtectedRoute><CustomerFormPage /></ProtectedRoute>} />
@@ -31,7 +33,7 @@ export default function App() {
       <Route path="/challans/new" element={<ProtectedRoute><ChallanFormPage /></ProtectedRoute>} />
       <Route path="/challans/:id" element={<ProtectedRoute><ChallanDetailPage /></ProtectedRoute>} />
 
-      <Route path="*" element={<Navigate to="/customers" replace />} />
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );
 }

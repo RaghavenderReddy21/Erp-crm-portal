@@ -2,6 +2,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ReactNode } from "react";
 import { useAuth } from "../context/AuthContext";
 
+const navItems = [
+  { code: "01", label: "Dashboard", path: "/dashboard" },
+  { code: "02", label: "Customers", path: "/customers" },
+  { code: "03", label: "Products & Stock", path: "/products" },
+  { code: "04", label: "Sales Challans", path: "/challans" },
+];
+
 export default function Layout({ children }: { children: ReactNode }) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -14,22 +21,26 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <h1>ERP + CRM Portal</h1>
+        <div className="sidebar-brand">
+          <span className="sidebar-mark">ECP</span>
+          <h1>ERP + CRM Portal</h1>
+        </div>
         <nav>
-          <NavLink to="/customers" className={({ isActive }) => (isActive ? "active" : "")}>
-            Customers
-          </NavLink>
-          <NavLink to="/products" className={({ isActive }) => (isActive ? "active" : "")}>
-            Products & Stock
-          </NavLink>
-          <NavLink to="/challans" className={({ isActive }) => (isActive ? "active" : "")}>
-            Sales Challans
-          </NavLink>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              <span className="nav-code">{item.code}</span>
+              <span>{item.label}</span>
+            </NavLink>
+          ))}
         </nav>
         <div className="user-info">
-          <div>{user?.name}</div>
-          <div>{user?.role}</div>
-          <button className="btn btn-sm" style={{ marginTop: 8 }} onClick={handleLogout}>
+          <span className="user-role-badge">{user?.role}</span>
+          <div className="user-name">{user?.name}</div>
+          <button className="btn btn-sm" style={{ marginTop: 10 }} onClick={handleLogout}>
             Logout
           </button>
         </div>
